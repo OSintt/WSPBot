@@ -1,0 +1,6 @@
+/node_modules
+/.wwebjs_cache
+pnpm-lock.yaml
+/dist
+/.wwebjs_auth
+.env
