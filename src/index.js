@@ -23,7 +23,6 @@ mongoose.connect(process.env.URI).then(async () => {
   });
 
   client.on("authenticated", async (session) => {
-    console.log('Cliente autenticado');
     train(client, auth(client));
   });
 
