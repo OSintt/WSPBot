@@ -11,7 +11,7 @@ async function auth(client) {
   if (bot && bot.host !== os.hostname()) {
     bot.host = os.hostname();
     await bot.save();
-    console.log('Bot autenticado en la máquina', os.hostname());
+    console.log('Bot autenticado en la máquina', os.hostname(), 'y el número +', bot.phone);
   }
   return bot;
 }
