@@ -20,12 +20,8 @@ mongoose.connect(process.env.URI).then(async () => {
   });
   client.on("remote_session_saved", () => {
     console.log('Sesión del cliente autenticada');
-  });
-
-  client.on("authenticated", async (session) => {
     train(client, auth(client));
   });
-
   client.on("message", async (message) => {
     listen(message);
   });
