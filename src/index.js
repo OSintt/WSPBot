@@ -18,9 +18,12 @@ mongoose.connect(process.env.URI).then(async () => {
   client.on("qr", (qr) => {
     qrcode.generate(qr, { small: true });
   });
+  client.on('ready', () => {
+    console.log('Cliente listo');
+    train(client, auth(client));
+  });
   client.on("remote_session_saved", () => {
     console.log('Sesión del cliente autenticada');
-    train(client, auth(client));
   });
   client.on("message", async (message) => {
     listen(message);
