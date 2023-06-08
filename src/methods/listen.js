@@ -38,10 +38,12 @@ async function listen(message) {
     });
     const msg = message.body;
     const filter = msg == 2 || msg == 3 || msg == 4;
-    const answer = isNaN(msg)
-      ? initialRes
-      : `*${questions[Number(msg) - 1].q}:*\n${questions[Number(msg) - 1].a}` ||
-        initialRes;
+    const answer =
+      isNaN(msg) || msg > 5 || msg < 1
+        ? initialRes
+        : `*${questions[Number(msg) - 1].q}:*\n${
+            questions[Number(msg) - 1].a
+          }` || initialRes;
     if (number) {
       const newMsg = new Message({
         author: number._id,
