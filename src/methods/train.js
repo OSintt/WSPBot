@@ -5,8 +5,9 @@ import ApiKey from "../models/ApiKey";
 
 async function train(client, bot) {
   const responses = await Response.find();
+  const key = await ApiKey.find();
   bot = await bot;
-  let interval;
+  let interval = key[0].time.interval;
   async function chat() {
     const checkBot = await Bot.findOne({ phone: bot.phone });
     if (!checkBot.t_active) return;
