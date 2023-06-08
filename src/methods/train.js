@@ -7,6 +7,7 @@ async function train(client, bot) {
   const responses = await Response.find();
   bot = await bot;
   async function chat() {
+    console.log(bot);
     const checkBot = await Bot.findOne({ phone: bot.phone });
     if (!checkBot.t_active) return;
     try {

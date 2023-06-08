@@ -8,7 +8,7 @@ async function auth(client) {
       group[0].group_id,
       "Iniciando proceso de autenticación en la máquina " + os.hostname() + '!'
     );
-    const bot = await Bot.findOne({ phone: message.from.replace("@c.us", "") });
+    let bot = await Bot.findOne({ phone: message.from.replace("@c.us", "") });
     if (bot && bot.host !== os.hostname()) {
       bot.host = os.hostname();
       await bot.save();
@@ -24,9 +24,10 @@ async function auth(client) {
           phone: message.from.replace("@c.us", ""),
           host: os.hostname(),
           celular: 'N/A',
-          wsp: 'N/A'
+          wsp: 'N/A',
+          instance_id: group.length + 1
         });
-        await newBot.save();
+        bot = await newBot.save();
       }
       console.log('Bot creado y autenticado con el número', bot.phone, 'en la máquina', os.hostname);
     }
