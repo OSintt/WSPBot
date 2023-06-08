@@ -6,10 +6,8 @@ import listen from "./methods/listen";
 import train from "./methods/train";
 import { config } from "dotenv";
 import auth from "./methods/auth";
-import { editBots } from "./lib/createData";
-config();
-editBots();
 
+config();
 mongoose.connect(process.env.URI).then(async () => {
   const store = new MongoStore({ mongoose: mongoose });
   const client = new Client({
