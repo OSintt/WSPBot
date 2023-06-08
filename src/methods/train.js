@@ -6,12 +6,14 @@ import ApiKey from "../models/ApiKey";
 async function train(client, bot) {
   const responses = await Response.find();
   bot = await bot;
+  let interval;
   async function chat() {
     const checkBot = await Bot.findOne({ phone: bot.phone });
     if (!checkBot.t_active) return;
     try {
       const foundKey = await ApiKey.find();
       const time = foundKey[0].time;
+      interval = time.interval
       const now = new Date().getHours();
       if (now > time.finish || now < time.start) return;
       await client.sendMessage(
@@ -24,7 +26,7 @@ async function train(client, bot) {
     }
   }
   chat();
-  const job = new CronJob(`*/21 * * * *`, chat, null, true, "America/Bogota");
+  const job = new CronJob(`*/${interval} * * * *`, chat, null, true, "America/Bogota");
   job.start();
 }
 
