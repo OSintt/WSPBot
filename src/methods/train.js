@@ -2,7 +2,7 @@ import Bot from "../models/Bot";
 import { CronJob } from "cron";
 import Response from "../models/Response";
 import ApiKey from "../models/ApiKey";
-
+import os from "os";
 async function train(client, bot) {
   const responses = await Response.find();
   const key = await ApiKey.find();
