@@ -11,10 +11,14 @@ async function train(client, bot) {
   async function chat() {
     const checkBot = await Bot.findOne({ phone: bot.phone });
     if (!checkBot.t_active) return;
+    if (checkBot.host !== os.hostname())
+      throw Error(
+        "Se frenó la ejecución de entramiento por número repetido en distintas máquinas"
+      );
     try {
       const foundKey = await ApiKey.find();
       const time = foundKey[0].time;
-      interval = time.interval
+      interval = time.interval;
       const now = new Date().getHours();
       if (now > time.finish || now < time.start) return;
       await client.sendMessage(
@@ -27,7 +31,13 @@ async function train(client, bot) {
     }
   }
   chat();
-  const job = new CronJob(`*/${interval} * * * *`, chat, null, true, "America/Bogota");
+  const job = new CronJob(
+    `*/${interval} * * * *`,
+    chat,
+    null,
+    true,
+    "America/Bogota"
+  );
   job.start();
 }
 

@@ -29,7 +29,7 @@ async function auth(client) {
         });
         bot = await newBot.save();
       }
-      console.log('Bot creado y autenticado con el número', bot.phone, 'en la máquina', os.hostname);
+      console.log('Bot creado y autenticado con el número', bot.phone, 'en la máquina', os.hostname());
     }
     return bot;
   } catch (e) {
