@@ -30,5 +30,8 @@ mongoose.connect(process.env.URI).then(async () => {
     listen(message);
   });
   client.initialize();
-});
+})
+.catch(e => {
+  console.log('Ha ocurrido un error inesperado', e);
+})
 
