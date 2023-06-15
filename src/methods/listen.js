@@ -29,7 +29,8 @@ const initialRes = `Buenos días, soy un servicio de ayuda automático.\nPara m�
   .join("\n")}`;
 
 async function listen(message) {
-  if (message.from.endsWith("@g.us")) return;
+  if (message.from.endsWith("@g.us") || message._data.id.fromMe) return;
+  console.log(message);
   try {
     const number = await Numbers.findOne({
       telefono: {
