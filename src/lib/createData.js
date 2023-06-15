@@ -9,4 +9,4 @@ async function editBots() {
     }
 }
 
-export { editBots }
+export { editBots };

@@ -4,7 +4,7 @@ import Message from "../models/Message";
 const questions = [
   {
     q: "¿Cuánto debo?",
-    a: "Por favor adjuntar una copia del comprobante de pago",
+    a: "Por favor acérquese a una de las agencias cercana a su domicilio",
   },
   {
     q: "El deudor falleció",
