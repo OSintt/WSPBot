@@ -28,38 +28,40 @@ const initialRes = `Buenos días, soy un servicio de ayuda automático.\nPara m�
   .map((q, i) => `[${i + 1}] ${q.q}`)
   .join("\n")}`;
 
-async function listen(message) {
+async function listen(message, bot) {
   if (message.from.endsWith("@g.us") || !message.body || message.body === '') return;
   try {
-    const number = await Numbers.findOne({
+    /*const number = await Numbers.findOne({
       telefono: {
         $regex: new RegExp(`^${message.from.replace("593", "")}`),
       },
-    });
+    });*/
     const msg = message.body;
-    const filter = msg == 2 || msg == 3 || msg == 4;
+    //const filter = msg == 2 || msg == 3 || msg == 4;
     const answer =
       isNaN(msg) || msg > 5 || msg < 1
         ? initialRes
         : `*${questions[Number(msg) - 1].q}:*\n${
             questions[Number(msg) - 1].a
           }` || initialRes;
-    if (number) {
+    //if (number) {
+      const authorExists = await Message.findOne({ author: message.from });
+      if (authorExists && answer === initialRes) return;
       const newMsg = new Message({
-        author: number._id,
+        author: message.from,
         content: msg,
         date: new Date(),
       });
       const savedMsg = await newMsg.save();
       bot.messages.push(savedMsg._id);
       await bot.save();
-      if (filter) {
+      /*if (filter) {
         if (number.eliminar) return;
         number.eliminar = true;
         number.causa = msg;
         await number.save();
-      }
-    }
+      }*/
+    //}
     await message.reply(answer);
   } catch (e) {
     console.log("Ocurrió un error respondiendo mensajes", e);

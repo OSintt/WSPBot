@@ -2,7 +2,7 @@ import { Schema, model, Types } from 'mongoose';
 const MessageSchema = new Schema({
   author: {
     type: Types.ObjectId,
-    ref: 'Numbers'
+    ref: 'Number'
   },
   content: String,
   date: Date
