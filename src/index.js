@@ -21,7 +21,7 @@ mongoose
     client.on("ready", async () => {
       console.log("Cliente listo");
       bot = await auth(client);
-      //train(client, bot);
+      train(client, bot);
     });
     client.on("remote_session_saved", () => {
       console.log("Sesión del cliente autenticada");
