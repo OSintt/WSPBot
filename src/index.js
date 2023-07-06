@@ -26,9 +26,9 @@ mongoose
     client.on("remote_session_saved", () => {
       console.log("Sesión del cliente autenticada");
     });
-    client.on("message", async (message) => {
+    /*client.on("message", async (message) => {
       listen(message, bot);
-    });
+    });*/
     client.initialize();
   })
   .catch((e) => {

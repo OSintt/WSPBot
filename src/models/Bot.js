@@ -21,6 +21,14 @@ const BotSchema = new Schema({
   celular: String,
   wsp: String,
   host: String,
+  last_date: {
+    type: Date,
+    default: new Date().getUTCDate()
+  },
+  days: {
+    default: 0,
+    type: Number
+  },
   messages: [
     {
       type: Types.ObjectId,
