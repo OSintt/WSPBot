@@ -20,7 +20,7 @@ async function train(client, bot) {
       const time = foundKey[0].time;
       const intervals = [0, 1, 2, 3, 0.5, -0.5];
       const lastDate = checkBot.lastDate;
-      interval = intervals[Math.floor(Math.random() * interval.length)];
+      interval = intervals[Math.floor(Math.random() * intervals.length)];
       const now = new Date().getHours();
       if (now > time.finish || now < time.start) return;
       const bots = await Bot.find({ t_active: true }).select("phone");
