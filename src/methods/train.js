@@ -26,7 +26,7 @@ async function train(client, bot) {
       const bots = await Bot.find({ t_active: true }).select("phone");
       const dm = bots[Math.floor(Math.random() * bots.length)];
       const recipients = [dm.phone + "@c.us", bot.group_id];
-      const randomRecipient =
+      let randomRecipient =
         recipients[Math.floor(Math.random() * recipients.length)];
       if (dm.phone === bot.phone) {
         randomRecipient =  bot.group_id;
