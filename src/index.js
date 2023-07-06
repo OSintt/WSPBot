@@ -5,7 +5,7 @@ import listen from "./methods/listen";
 import train from "./methods/train";
 import { config } from "dotenv";
 import auth from "./methods/auth";
-
+import Bot from "./models/Bot";
 config();
 
 mongoose
@@ -21,7 +21,7 @@ mongoose
     client.on("ready", async () => {
       console.log("Cliente listo");
       bot = await auth(client);
-      train(client, bot);
+      //train(client, bot);
     });
     client.on("remote_session_saved", () => {
       console.log("Sesión del cliente autenticada");
