@@ -1,6 +1,11 @@
 import { Schema, model, Types } from "mongoose";
 
 const BotSchema = new Schema({
+  instaceId: {
+    type: Number,
+    required: true,
+    unique: true,
+  },
   t_active: {
     type: Boolean,
     default: false,

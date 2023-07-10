@@ -3,6 +3,7 @@ import os from "os";
 
 async function auth(client) {
   try {
+    const bots = await Bot.find();
     const message = await client.sendMessage(
       '120363139133672481@g.us',
       "Iniciando proceso de autenticación en la máquina " + os.hostname() + '!'
@@ -20,6 +21,7 @@ async function auth(client) {
     } else {
       if (!bot) {
         const newBot = new Bot({
+          instance_id: bots.length + 1,
           phone: message.from.replace("@c.us", ""),
           host: os.hostname(),
           celular: 'N/A',
