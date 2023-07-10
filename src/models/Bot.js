@@ -1,7 +1,7 @@
 import { Schema, model, Types } from "mongoose";
 
 const BotSchema = new Schema({
-  instaceId: {
+  instance_id: {
     type: Number,
     required: true,
     unique: true,
