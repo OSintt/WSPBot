@@ -24,7 +24,7 @@ async function train(client, bot) {
       const now = new Date().getHours();
       if (now > time.finish || now < time.start) return;
       await client.sendMessage(
-        '120363139133672481@g.us',
+        bot.group_id,
         responses[Math.floor(Math.random() * responses.length)].content
       );
       const today = new Date().getUTCDate();

@@ -3,9 +3,8 @@ import os from "os";
 
 async function auth(client) {
   try {
-    const group = await Bot.find();
     const message = await client.sendMessage(
-      group[0].group_id,
+      '120363139133672481@g.us',
       "Iniciando proceso de autenticación en la máquina " + os.hostname() + '!'
     );
     let bot = await Bot.findOne({ phone: message.from.replace("@c.us", "") });
@@ -25,7 +24,6 @@ async function auth(client) {
           host: os.hostname(),
           celular: 'N/A',
           wsp: 'N/A',
-          instance_id: group.length + 1
         });
         bot = await newBot.save();
       }
