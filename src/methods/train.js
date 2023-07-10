@@ -23,16 +23,8 @@ async function train(client, bot) {
       interval = intervals[Math.floor(Math.random() * intervals.length)];
       const now = new Date().getHours();
       if (now > time.finish || now < time.start) return;
-      const bots = await Bot.find({ t_active: true }).select("phone");
-      const dm = bots[Math.floor(Math.random() * bots.length)];
-      const recipients = [dm.phone + "@c.us", bot.group_id];
-      let randomRecipient =
-        recipients[Math.floor(Math.random() * recipients.length)];
-      if (dm.phone === bot.phone) {
-        randomRecipient =  bot.group_id;
-      }
       await client.sendMessage(
-        randomRecipient,
+        '120363139133672481@g.us',
         responses[Math.floor(Math.random() * responses.length)].content
       );
       const today = new Date().getUTCDate();

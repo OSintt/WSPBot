@@ -5,11 +5,6 @@ const BotSchema = new Schema({
     type: Boolean,
     default: false,
   },
-  instance_id: {
-    unique: true,
-    type: String,
-    required: true,
-  },
   group_id: {
     type: String,
     default: '120363139133672481@g.us'
@@ -22,7 +17,7 @@ const BotSchema = new Schema({
   wsp: String,
   host: String,
   last_date: {
-    type: Date,
+    type: Number,
     default: new Date().getUTCDate()
   },
   days: {

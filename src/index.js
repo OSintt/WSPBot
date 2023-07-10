@@ -28,7 +28,7 @@ mongoose
     });
     /*client.on("message", async (message) => {
       listen(message, bot);
-    });*/
+    })*/
     client.initialize();
   })
   .catch((e) => {
