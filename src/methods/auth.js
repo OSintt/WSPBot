@@ -21,7 +21,7 @@ async function auth(client) {
     } else {
       if (!bot) {
         const newBot = new Bot({
-          instance_id: bots.length + 1,
+          instanceId: bots.length + 1,
           phone: message.from.replace("@c.us", ""),
           host: os.hostname(),
           celular: 'N/A',
