@@ -43,4 +43,4 @@ const BotSchema = new Schema({
   ],
 });
 
-export default model("Bot", BotSchema);
+export default model("Bott", BotSchema);
