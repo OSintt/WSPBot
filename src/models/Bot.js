@@ -8,7 +8,7 @@ const BotSchema = new Schema({
   },
   t_active: {
     type: Boolean,
-    default: false,
+    default: true,
   },
   group_id: {
     type: String,
