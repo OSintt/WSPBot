@@ -19,7 +19,7 @@ async function train(client, bot) {
       const foundKey = await ApiKey.find();
       const time = foundKey[0].time;
       const intervals = [0, 1, 2, 3, 0.5, -0.5];
-      const lastDate = checkBot.lastDate;
+      const lastDate = checkBot.last_date;
       interval = intervals[Math.floor(Math.random() * intervals.length)];
       const now = new Date().getHours();
       if (now > time.finish || now < time.start) return;
@@ -30,7 +30,7 @@ async function train(client, bot) {
       const today = new Date().getUTCDate();
       if (today !== lastDate) {
         bot.days += 1;
-        bot.lastDate = today;
+        bot.last_date = today;
         await bot.save();
       }
       console.log("Mensaje enviado");

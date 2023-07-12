@@ -12,22 +12,26 @@ const BotSchema = new Schema({
   },
   group_id: {
     type: String,
-    default: '120363139133672481@g.us'
+    default: "120363139133672481@g.us",
   },
   phone: {
     type: String,
-    unique: true
+    unique: true,
   },
   celular: String,
   wsp: String,
   host: String,
+  first_date: {
+    type: Date,
+    default: new Date(),
+  },
   last_date: {
     type: Number,
-    default: new Date().getUTCDate()
+    default: new Date().getUTCDate(),
   },
   days: {
     default: 0,
-    type: Number
+    type: Number,
   },
   messages: [
     {
