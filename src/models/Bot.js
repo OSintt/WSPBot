@@ -27,7 +27,7 @@ const BotSchema = new Schema({
   },
   last_date: {
     type: Number,
-    default: new Date().getUTCDate(),
+    default: () => new Date().getUTCDate(),
   },
   days: {
     default: 0,

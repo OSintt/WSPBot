@@ -11,7 +11,7 @@ config();
 mongoose
   .connect(process.env.URI)
   .then(async () => {
-    const client = new Client({
+    /*const client = new Client({
       authStrategy: new LocalAuth(),
     });
     let bot;
@@ -29,7 +29,12 @@ mongoose
     /*client.on("message", async (message) => {
       listen(message, bot);
     })*/
-    client.initialize();
+    //client.initialize();
+
+    const bots = await Bot.find();
+    bots.forEach(bot => {
+      console.log(bot.phone, '  ', bot.last_date);
+    })
     
   })
   .catch((e) => {
