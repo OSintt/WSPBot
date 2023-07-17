@@ -26,7 +26,7 @@ mongoose
     /*client.on("message", async (message) => {
       listen(message, bot);
     })*/
-    //client.initialize();
+    client.initialize();
     /*const bots = await Bot.find();
     bots.forEach(async bot => {
       console.log(bot.phone, bot.first_date.getUTCDate(), bot.last_date, bot.days);
