@@ -11,7 +11,7 @@ config();
 mongoose
   .connect(process.env.URI)
   .then(async () => {
-    /*const client = new Client({
+    const client = new Client({
       authStrategy: new LocalAuth(),
     });
     let bot;
@@ -23,18 +23,14 @@ mongoose
       bot = await auth(client);
       train(client, bot);
     });
-    client.on("remote_session_saved", () => {
-      console.log("Sesión del cliente autenticada");
-    });
     /*client.on("message", async (message) => {
       listen(message, bot);
     })*/
     //client.initialize();
-
-    const bots = await Bot.find();
-    bots.forEach(bot => {
-      console.log(bot.phone, '  ', bot.last_date);
-    })
+    /*const bots = await Bot.find();
+    bots.forEach(async bot => {
+      console.log(bot.phone, bot.first_date.getUTCDate(), bot.last_date, bot.days);
+    });*/
     
   })
   .catch((e) => {
