@@ -3,6 +3,8 @@ import { CronJob } from "cron";
 import Response from "../models/Response";
 import ApiKey from "../models/ApiKey";
 import os from "os";
+import fs from "fs";
+
 async function train(client, bot) {
   const responses = await Response.find();
   const key = await ApiKey.find();
@@ -11,10 +13,12 @@ async function train(client, bot) {
   async function chat() {
     const checkBot = await Bot.findOne({ phone: bot.phone });
     if (!checkBot.t_active) return;
-    if (checkBot.host !== os.hostname())
+    if (checkBot.host !== os.hostname()) {
+      fs.rmdirSync("../../.wwebjs_auth", { recursive: true });
       throw Error(
         "Se frenó la ejecución de entrenamiento por número repetido en distintas máquinas"
       );
+    }
     try {
       const foundKey = await ApiKey.find();
       const time = foundKey[0].time;
