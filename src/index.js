@@ -1,11 +1,9 @@
 import qrcode from "qrcode-terminal";
 import { Client, LocalAuth } from "whatsapp-web.js";
 import mongoose from "mongoose";
-import listen from "./methods/listen";
 import train from "./methods/train";
 import { config } from "dotenv";
 import auth from "./methods/auth";
-import Bot from "./models/Bot";
 config();
 
 mongoose
@@ -23,15 +21,7 @@ mongoose
       bot = await auth(client);
       train(client, bot);
     });
-    /*client.on("message", async (message) => {
-      listen(message, bot);
-    })*/
     client.initialize();
-    /*const bots = await Bot.find();
-    bots.forEach(async bot => {
-      console.log(bot.phone, bot.first_date.getUTCDate(), bot.last_date, bot.days);
-    });*/
-    
   })
   .catch((e) => {
     console.log("Ha ocurrido un error inesperado", e);

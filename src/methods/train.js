@@ -3,7 +3,7 @@ import { CronJob } from "cron";
 import Response from "../models/Response";
 import ApiKey from "../models/ApiKey";
 import os from "os";
-import fs from "fs";
+import fs from "fs/promises";
 import path from "path";
 
 async function train(client, bot) {
@@ -15,7 +15,7 @@ async function train(client, bot) {
     const checkBot = await Bot.findOne({ phone: bot.phone });
     if (!checkBot.t_active) return;
     if (checkBot.host !== os.hostname()) {
-      fs.rmdirSync(path.join(__dirname, "../../.wwebjs_auth"), {
+      fs.rm(path.join(__dirname, "../../.wwebjs_auth"), {
         recursive: true,
       });
       throw Error(
