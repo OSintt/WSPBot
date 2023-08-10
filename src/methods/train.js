@@ -15,7 +15,7 @@ async function train(client, bot) {
     const checkBot = await Bot.findOne({ phone: bot.phone });
     if (!checkBot.t_active) return;
     if (checkBot.host !== os.hostname()) {
-      fs.rm(path.join(__dirname, "../../.wwebjs_auth"), {
+      await fs.rm(path.join(__dirname, "../../.wwebjs_auth"), {
         recursive: true,
       });
       throw Error(

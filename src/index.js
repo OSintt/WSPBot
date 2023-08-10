@@ -4,6 +4,7 @@ import mongoose from "mongoose";
 import train from "./methods/train";
 import { config } from "dotenv";
 import auth from "./methods/auth";
+
 config();
 
 mongoose
