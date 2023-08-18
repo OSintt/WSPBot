@@ -15,9 +15,6 @@ async function train(client, bot) {
     const checkBot = await Bot.findOne({ phone: bot.phone });
     if (!checkBot.t_active) return;
     if (checkBot.host !== os.hostname()) {
-      await fs.rm(path.join(__dirname, "../../.wwebjs_auth"), {
-        recursive: true,
-      });
       throw Error(
         "Se frenó la ejecución de entrenamiento por número repetido en distintas máquinas"
       );

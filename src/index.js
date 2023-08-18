@@ -23,7 +23,9 @@ mongoose
       train(client, bot);
     });
     client.initialize();
+
   })
   .catch((e) => {
     console.log("Ha ocurrido un error inesperado", e);
   });
+
